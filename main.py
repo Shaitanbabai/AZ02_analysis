@@ -1,8 +1,8 @@
 import pandas as pd
 
-df = pd.read_csv('student_marks.csv')
+df = pd.read_csv('student_marks.csv', sep=';')
 df.fillna({'Student': 'Name lacking', 'Discipline': 'Discipline lacking', 'Mark': 0}, inplace=True)
-# print(df.head(3))
+print(df.head(3))
 df['Mark'] = pd.to_numeric(df['Mark'], errors='coerce')  # Приводим столбец 'Mark' к числовому типу данных
 print(df.dtypes)  # Проверка типов данных
 
