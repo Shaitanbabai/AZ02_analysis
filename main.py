@@ -1,9 +1,10 @@
 import pandas as pd
 
 df = pd.read_csv('student_marks.csv')
-# df.fillna({'Student': 'Name lacking', 'Discipline': 'Discipline lacking', 'Mark': 'Mark lacking'}, inplace=True)
-
+df.fillna({'Student': 'Name lacking', 'Discipline': 'Discipline lacking', 'Mark': 0}, inplace=True)
 # print(df.head(3))
+df['Mark'] = pd.to_numeric(df['Mark'], errors='coerce')  # Приводим столбец 'Mark' к числовому типу данных
+print(df.dtypes)  # Проверка типов данных
 
 # Средняя оценка по каждому предмету
 mean_marks = df.groupby('Discipline')['Mark'].mean()
